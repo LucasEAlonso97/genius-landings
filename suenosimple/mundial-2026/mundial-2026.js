@@ -47,15 +47,14 @@ if (form) {
     try {
       // IMPORTANTE: Confirmar con Backend en Swagger (localhost:3000/api-docs)
       // la ruta exacta y si el campo teléfono se llama "whatsapp" o "telefono".
-      const response = await fetch('http://localhost:3000/api/leads', {
+      const response = await fetch('http://localhost:3000/api/landings/1/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          nombre: nombre,
+          name: nombre,
           email: email,
-          telefono: whatsapp,
-          cliente: 'SueñoSimple',
-          campana: 'Mundial 2026'
+          phone: whatsapp,
+          message: 'Match Sale Mundial 2026'
         })
       });
 
