@@ -1,0 +1,383 @@
+/* IDENTIDAD VISUAL DE SUEÑOSIMPLE (extraída de landing-economica-pro.html) */
+:root {
+  --color-dark: #0f172a;          /* Hero, footer y textos principales */
+  --color-primary: #2563eb;       /* Azul principal de marca */
+  --color-primary-dark: #1d4ed8;  /* Hover de botones */
+  --color-highlight: #60a5fa;     /* Celeste para destacar palabras en fondo oscuro */
+  --color-whatsapp: #16a34a;      /* Verde exclusivo para botón de WhatsApp */
+  --color-bg: #ffffff;            /* Fondo principal */
+  --color-surface: #f8fafc;       /* Fondo de tarjetas y secciones alternas */
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-text-dark-muted: #94a3b8;
+  --color-border: #e2e8f0;
+  --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-card: 10px;
+  --radius-btn: 6px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Barra superior de navegación interna */
+.back-bar {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 32px;
+  font-size: 0.82rem;
+}
+
+.back-bar a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.back-bar a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+.header {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--color-dark);
+}
+
+.logo strong {
+  color: var(--color-primary);
+}
+
+.btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #fff;
+  text-decoration: none;
+  padding: 9px 16px;
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+/* Hero oscuro (mismo estilo que Economica Pro) */
+.hero {
+  background: var(--color-dark);
+  color: #ffffff;
+  padding: 64px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.countdown-banner {
+  display: inline-flex;
+  gap: 8px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: var(--color-highlight);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.hero-info h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.hero-info h1 span {
+  color: var(--color-highlight);
+}
+
+.sub-copy {
+  color: var(--color-text-dark-muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  border-radius: var(--radius-card);
+  object-fit: cover;
+  max-height: 280px;
+  border: 1px solid #334155;
+}
+
+/* Tarjeta Formulario sobre el Hero */
+.lead-card {
+  background: #ffffff;
+  color: var(--color-text);
+  padding: 28px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+}
+
+.lead-card h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.lead-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 18px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  font-size: 0.95rem;
+}
+
+.form-group input:focus {
+  outline: 2px solid var(--color-primary);
+  border-color: transparent;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  padding: 14px 24px;
+  border-radius: var(--radius-btn);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.form-feedback {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Producto Estrella */
+.product-section {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 64px 0;
+}
+
+.product-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 36px 28px;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.product-badge {
+  display: inline-block;
+  background: #eff6ff;
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.product-card h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.price-box {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.current-price {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.installments {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.benefits-list {
+  list-style: none;
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Confianza y Reseñas */
+.trust-section {
+  padding: 64px 0;
+}
+
+.logistics-box {
+  text-align: center;
+  max-width: 660px;
+  margin: 0 auto 36px;
+}
+
+.logistics-box h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.logistics-box p {
+  color: var(--color-text-muted);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.review-card {
+  background: var(--color-surface);
+  padding: 22px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+}
+
+.review-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.review-card span {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-dark);
+}
+
+/* Footer */
+.footer {
+  background: var(--color-dark);
+  color: var(--color-text-dark-muted);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer-support {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.footer-policies {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 0.875rem;
+}
+
+.legal {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .hero-grid,
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-info h1 {
+    font-size: 1.9rem;
+  }
+}
