@@ -1,76 +1,96 @@
-// 1. Contador regresivo simple para el "Match Sale"
-function iniciarContador() {
-  const elementoContador = document.getElementById('countdown');
-  if (!elementoContador) return;
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Selector de medidas en Oferta destacada
+  const sizeButtons = document.querySelectorAll('.size-btn');
+  const priceListEl = document.getElementById('priceList');
+  const priceMainEl = document.getElementById('priceMain');
+  const priceInstallmentEl = document.getElementById('priceInstallment');
+  const selectedSummaryEl = document.getElementById('selectedSummary');
+  const btnComprar = document.getElementById('btnComprar');
 
-  // Simulamos 2 días y 14 horas desde que el usuario entra
-  let segundosRestantes = (2 * 86400) + (14 * 3600) + (35 * 60);
+  let selectedSize = '1 plaza';
+  let selectedPrice = '130.000';
 
-  setInterval(() => {
-    if (segundosRestantes <= 0) return;
-    segundosRestantes--;
+  sizeButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      sizeButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
 
-    const dias = Math.floor(segundosRestantes / 86400);
-    const horas = Math.floor((segundosRestantes % 86400) / 3600);
-    const minutos = Math.floor((segundosRestantes % 3600) / 60);
-    const segundos = segundosRestantes % 60;
+      selectedSize = btn.dataset.size;
+      selectedPrice = btn.dataset.price;
 
-    elementoContador.textContent = 
-      `${String(dias).padStart(2, '0')}d : ${String(horas).padStart(2, '0')}h : ${String(minutos).padStart(2, '0')}m : ${String(segundos).padStart(2, '0')}s`;
-  }, 1000);
-}
-
-// 2. Conexión del formulario con Landing CRM (Node/Express en puerto 3000)
-const form = document.getElementById('lead-form');
-const feedback = document.getElementById('form-feedback');
-const submitBtn = document.getElementById('submit-btn');
-
-if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    feedback.textContent = '';
-
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const whatsapp = document.getElementById('whatsapp').value.trim();
-
-    // Validación mínima antes de enviar
-    if (!nombre || !email.includes('@') || whatsapp.length < 8) {
-      feedback.style.color = '#dc2626';
-      feedback.textContent = 'Por favor completá todos los campos con datos válidos.';
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando...';
-
-    try {
-      // IMPORTANTE: Confirmar con Backend en Swagger (localhost:3000/api-docs)
-      // la ruta exacta y si el campo teléfono se llama "whatsapp" o "telefono".
-      const response = await fetch('http://localhost:3000/api/landings/1/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: nombre,
-          email: email,
-          phone: whatsapp,
-          message: 'Match Sale Mundial 2026'
-        })
-      });
-
-      if (!response.ok) throw new Error('Error en la respuesta del servidor');
-
-      feedback.style.color = '#16a34a';
-      feedback.textContent = '¡Listo! Ya tenés acceso anticipado a las ofertas del Match Sale.';
-      form.reset();
-    } catch (error) {
-      feedback.style.color = '#dc2626';
-      feedback.textContent = 'No pudimos registrar tu solicitud ahora. Probá de nuevo en unos minutos.';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Quiero mi descuento mundial';
-    }
+      priceListEl.textContent = `$ ${btn.dataset.list}`;
+      priceMainEl.textContent = selectedPrice;
+      priceInstallmentEl.textContent = btn.dataset.installment;
+      selectedSummaryEl.innerHTML = `Medida seleccionada: <strong>${selectedSize}</strong> ($ ${selectedPrice})`;
+    });
   });
-}
 
-iniciarContador();
+  // Botón Comprar desplaza suavemente al formulario de reserva
+  if (btnComprar) {
+    btnComprar.addEventListener('click', () => {
+      document.getElementById('reserva').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('nombre').focus();
+    });
+  }
+
+  // 2. Acordeón de Preguntas Frecuentes
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach((item) => {
+    const questionBtn = item.querySelector('.faq-question');
+    const icon = item.querySelector('.faq-icon');
+
+    questionBtn.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('open');
+      questionBtn.setAttribute('aria-expanded', isOpen);
+      icon.textContent = isOpen ? '−' : '+';
+    });
+  });
+
+  // 3. Envío del formulario a Landing CRM (POST /api/landings/{id}/leads)
+  const leadForm = document.getElementById('leadForm');
+  const feedbackEl = document.getElementById('formFeedback');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Cambiar este ID cuando Backend confirme el ID definitivo de Mundial 2026
+  const LANDING_ID = 1;
+
+  if (leadForm) {
+    leadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const whatsapp = document.getElementById('whatsapp').value.trim();
+
+      feedbackEl.textContent = 'Enviando solicitud...';
+      feedbackEl.className = 'form-feedback';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(`http://localhost:3000/api/landings/${LANDING_ID}/leads`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: nombre,
+            email: email,
+            phone: whatsapp,
+            message: `Match Sale Mundial 2026 - Colchón Económica Pro (${selectedSize})`
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error HTTP: ${response.status}`);
+        }
+
+        feedbackEl.textContent = '¡Listo! Ya reservamos tu descuento del Match Sale. Te contactamos a la brevedad.';
+        feedbackEl.classList.add('ok');
+        leadForm.reset();
+      } catch (error) {
+        feedbackEl.textContent = 'No pudimos conectar con el servidor. Verificá que Landing CRM esté encendido en el puerto 3000.';
+        feedbackEl.classList.add('error');
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  }
+});

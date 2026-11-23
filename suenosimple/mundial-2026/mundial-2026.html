@@ -3,160 +3,198 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SueñoSimple | Ofertas Mundialistas 2026</title>
+  <title>SueñoSimple | Match Sale Mundial 2026</title>
   <link rel="stylesheet" href="mundial-2026.css" />
 </head>
 <body>
-
-  <!-- 1. HEADER -->
-  <header class="header">
-    <div class="container header-content">
-      <a href="#" class="logo">Sueño<strong>Simple</strong></a>
-      <a href="https://wa.me/5491100000000" target="_blank" rel="noopener" class="btn-whatsapp">
-        Hablamos por WhatsApp
-      </a>
-
-    <div class="back-bar">
-      <a href="../index.html">← Volver a SueñoSimple</a>
-    </div>
+  <!-- Barra superior -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="../index.html" class="brand">Sueño<span>Simple</span></a>
+      <nav class="nav-links">
+        <a href="#oferta" class="active">Ofertas</a>
+        <a href="#envios">Envíos</a>
+        <a href="#faq">Preguntas</a>
+      </nav>
     </div>
   </header>
 
   <main>
-    <!-- 2. HERO + FORMULARIO DE CAPTACIÓN (VISIBLE EN PRIMER SCROLL) -->
+    <!-- Hero principal con imagen 1 -->
     <section class="hero">
       <div class="container hero-grid">
-        
-        <div class="hero-info">
-          <!-- Contador de urgencia (Match Sale) -->
-          <div class="countdown-banner">
-            <span>Próximo Match Sale en:</span>
-            <strong id="countdown">02d : 14h : 35m : 10s</strong>
-          </div>
-
-          <h1>Descansá como un campeón para alentar a la selección.</h1>
-          <p class="sub-copy">
-            Dormir bien no debería ser un lujo, especialmente en meses de pasión mundialista. 
-            Aprovechá nuestras ofertas con precio honesto y entrega rápida.
+        <div class="hero-copy">
+          <span class="badge-mundial">⚽ Match Sale Mundial 2026</span>
+          <h1>Descansá como campeón antes del próximo partido.</h1>
+          <p>
+            Equipá tu dormitorio con la línea <strong>Económica Pro</strong> a precio directo de fábrica y en 12 cuotas sin interés.
           </p>
-
-          <!-- Reemplazar src por la imagen optimizada que pase Erick -->
-          <div class="hero-image-wrapper">
-            <img 
-              src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80" 
-              alt="Amigos mirando el partido cómodos en un sommier SueñoSimple" 
-              loading="eager"
-            />
+          <div class="hero-actions">
+            <a href="#oferta" class="btn-primary">Ver oferta destacada</a>
+            <a href="#reserva" class="btn-outline">Reservar descuento</a>
           </div>
         </div>
+        <div class="hero-media">
+          <img src="imagenes_mundial_2026/mundial-img-1.png" alt="Familia celebrando el Mundial en la cama" />
+        </div>
+      </div>
+    </section>
 
-        <!-- Formulario de captación (Match Sale) -->
-        <aside class="lead-card" id="registro">
-          <h2>Acceso anticipado a las ofertas relámpago</h2>
-          <p>
-            Registrate para recibir alertas exclusivas cada vez que juegue la selección 
-            y accedé a precios de fábrica antes que nadie.
-          </p>
+    <!-- Sección 1: Oferta destacada (Figma) -->
+    <section id="oferta" class="section">
+      <div class="container">
+        <h2 class="section-title">Oferta destacada</h2>
 
-          <form id="lead-form" novalidate>
-            <div class="form-group">
-              <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" name="nombre" placeholder="Ej: Martina López" required />
+        <div class="card product-card">
+          <div class="product-image">
+            <img src="imagenes_mundial_2026/mundial-img-2.png" alt="Colchón Económica Pro SueñoSimple" />
+          </div>
+
+          <div class="product-info">
+            <span class="pill-tag">Nuestra estrella, Línea Económica Pro</span>
+            <h3>Colchón Económica Pro</h3>
+
+            <div class="size-selector">
+              <span class="size-label">Medida</span>
+              <div class="size-options" id="sizeOptions">
+                <button type="button" class="size-btn active" data-size="1 plaza" data-list="170.000" data-price="130.000" data-installment="10.833">
+                  1 plaza
+                </button>
+                <button type="button" class="size-btn" data-size="2 plazas" data-list="215.000" data-price="165.000" data-installment="13.750">
+                  2 plazas
+                </button>
+                <button type="button" class="size-btn" data-size="Queen" data-list="255.000" data-price="195.000" data-installment="16.250">
+                  Queen
+                </button>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="martina@email.com" required />
+            <div class="pricing">
+              <p class="price-list">Precio de Lista: <span id="priceList">$ 170.000</span></p>
+              <p class="price-main">$ <span id="priceMain">130.000</span></p>
+              <p class="price-installments">12 cuotas sin interés de <span id="priceInstallment">10.833</span></p>
             </div>
 
-            <div class="form-group">
-              <label for="whatsapp">WhatsApp</label>
-              <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: 11 2345 6789" required />
+            <ul class="benefits-list">
+              <li>✓ Espuma de alta densidad.</li>
+              <li>✓ Precio honesto sin costos escondidos.</li>
+              <li>✓ Garantía simple.</li>
+            </ul>
+
+            <button type="button" id="btnComprar" class="btn-primary btn-comprar">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 2: Logística y entrega (Figma) -->
+    <section id="envios" class="section">
+      <div class="container">
+        <h2 class="section-title">Sin vueltas, comprás hoy, te llega antes del próximo partido.</h2>
+
+        <div class="card shipping-card">
+          <div class="shipping-copy">
+            <p class="shipping-lead">Entrega rápida en AMBA y envíos a todo el país.</p>
+            <p class="shipping-sub">Sabemos que el Mundial no espera, tu descanso tampoco.</p>
+          </div>
+          <div class="shipping-logo">
+            <img src="imagenes_mundial_2026/mundial-img-3.png" alt="AMBA Logística" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de captura conectado a Landing CRM -->
+    <section id="reserva" class="section">
+      <div class="container">
+        <div class="card lead-card">
+          <div class="lead-header">
+            <span class="pill-tag">Cupos limitados Match Sale</span>
+            <h2>Asegurá tu precio promocional</h2>
+            <p id="selectedSummary">Medida seleccionada: <strong>1 plaza</strong> ($ 130.000)</p>
+          </div>
+
+          <form id="leadForm" class="lead-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre y apellido</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Analía Pérez" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="analia@ejemplo.com" required />
+              </div>
+              <div class="form-group">
+                <label for="whatsapp">WhatsApp</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="11 2345 6789" required />
+              </div>
             </div>
 
-            <button type="submit" class="btn-primary" id="submit-btn">
-              Quiero mi descuento mundial
-            </button>
-
-            <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
+            <button type="submit" id="submitBtn" class="btn-primary">Quiero mi descuento mundial</button>
+            <p id="formFeedback" class="form-feedback" aria-live="polite"></p>
           </form>
-        </aside>
-
+        </div>
       </div>
     </section>
 
-    <!-- 3. PRODUCT SHOWCASE (ECONÓMICA PRO) -->
-    <section class="product-section">
+    <!-- Sección 3: Preguntas frecuentes y banner WhatsApp (Figma) -->
+    <section id="faq" class="section">
       <div class="container">
-        <div class="product-card">
-          <div class="product-badge">Producto Estrella</div>
-          <h2>Nuestra estrella, línea Económica Pro</h2>
+        <h2 class="section-title">Preguntas frecuentes</h2>
 
-          <div class="price-box">
-            <span class="old-price">$239.990</span>
-            <span class="current-price">$189.990</span>
-            <span class="installments">Hasta 6 cuotas sin interés</span>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>¿Cuánto tarda la entrega?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>En CABA y GBA entregamos en 24 a 48 horas hábiles con AMBA Logística. Al resto del país despachamos dentro de las 48 horas y tarda entre 3 y 6 días hábiles.</p>
+            </div>
           </div>
 
-          <ul class="benefits-list">
-            <li>✔ Espuma de alta densidad</li>
-            <li>✔ Precio honesto sin costos escondidos</li>
-            <li>✔ Garantía simple</li>
-          </ul>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>¿Tiene garantía?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Sí, todos nuestros colchones Económica Pro cuentan con garantía oficial directa de fábrica por 2 años contra deformaciones de espuma.</p>
+            </div>
+          </div>
 
-          <a href="#registro" class="btn-primary">Reservar precio mundialista</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. SOCIAL PROOF + CONFIANZA Y LOGÍSTICA -->
-    <section class="trust-section">
-      <div class="container">
-        <div class="logistics-box">
-          <h2>Sin vueltas, comprás hoy, te llega antes del próximo partido.</h2>
-          <p>
-            Entrega rápida en AMBA y envíos a todo el país. Sabemos que el Mundial no espera, 
-            tu descanso tampoco.
-          </p>
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>¿Puedo pagar en cuotas?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Sí, podés abonar en hasta 12 cuotas sin interés con tarjetas bancarias adheridas o aprovechar descuento extra por transferencia.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="reviews-grid">
-          <article class="review-card">
-            <p>"Compré el Económica Pro un martes y el jueves ya estaba durmiendo ahí. Excelente relación precio-calidad."</p>
-            <span>— Lucas G., CABA</span>
-          </article>
-          <article class="review-card">
-            <p>"Tenía miedo por el precio bajo pero la densidad es súper firme. Sin vueltas con la entrega."</p>
-            <span>— Sofía M., Zona Oeste</span>
-          </article>
-          <article class="review-card">
-            <p>"Me asesoraron por WhatsApp al toque para elegir la medida. Súper recomendables."</p>
-            <span>— Diego R., La Plata</span>
-          </article>
+        <!-- Banner WhatsApp -->
+        <div class="whatsapp-banner">
+          <p>¿Dudas sobre la densidad y el tamaño?</p>
+          <a href="https://wa.me/5491100000000?text=Hola%20Sue%C3%B1oSimple,%20tengo%20una%20consulta%20por%20el%20Colch%C3%B3n%20Econ%C3%B3mica%20Pro" target="_blank" rel="noopener" class="btn-whatsapp">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.758.457 3.473 1.328 4.988L2 22l5.184-1.359a9.923 9.923 0 0 0 4.847 1.258h.004c5.515 0 9.969-4.453 9.969-9.969A9.91 9.91 0 0 0 19.082 4.92 9.912 9.912 0 0 0 12.031 2zm5.82 14.273c-.246.691-1.434 1.32-1.984 1.402-.508.074-1.148.105-1.852-.117-.426-.137-.973-.316-1.672-.617-2.941-1.269-4.863-4.234-5.012-4.43-.145-.195-1.195-1.59-1.195-3.035 0-1.445.758-2.156 1.027-2.449.27-.293.586-.367.781-.367.195 0 .391.004.562.012.18.008.422-.07.66.504.246.586.832 2.027.906 2.176.074.145.121.316.023.512-.098.195-.145.316-.293.488-.145.172-.309.383-.441.516-.145.145-.297.305-.129.598.172.293.762 1.258 1.637 2.039 1.125 1.004 2.074 1.316 2.367 1.461.293.145.465.121.637-.074.172-.195.734-.855.93-1.148.195-.293.391-.246.66-.145.27.098 1.711.809 2.004.953.293.148.488.223.562.344.074.125.074.711-.172 1.402z"/>
+            </svg>
+            Hablanos por WhatsApp
+          </a>
         </div>
+
+        <p class="promo-disclaimer">
+          Promoción válida hasta agotar stock. SueñoSimple, transparencia y postventa activa.
+        </p>
       </div>
     </section>
   </main>
 
-  <!-- 5. FOOTER Y SOPORTE -->
   <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-support">
-        <p><strong>¿Dudas sobre la densidad o el tamaño? Hablamos por WhatsApp.</strong></p>
-        <a href="https://wa.me/5491100000000" target="_blank" rel="noopener" class="btn-whatsapp">
-          Consultar por WhatsApp
-        </a>
-      </div>
-
-      <div class="footer-policies">
-        <span>🛡️ Garantía directa de fábrica</span>
-        <span>🔄 Cambios simples sin letra chica</span>
-        <span>🏷️ Sello de Precio Honesto</span>
-      </div>
-
-      <p class="legal">
-        Promoción válida hasta agotar stock. SueñoSimple, transparencia y postventa activa.
-      </p>
+    <div class="container">
+      <p>© SueñoSimple. 2026. Todos los derechos reservados</p>
     </div>
   </footer>
 
